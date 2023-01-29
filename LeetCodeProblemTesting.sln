@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32210.238
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeetCodeProblemTesting", "LeetCodeProblemTesting.csproj", "{0F1E0CB0-3E94-4ABE-8EF0-9005E580A85A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeetCodeProblemTesting", "LeetCodeProblemTesting\LeetCodeProblemTesting.csproj", "{0F1E0CB0-3E94-4ABE-8EF0-9005E580A85A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestingGrounds", "..\TestingGrounds\TestingGrounds.csproj", "{FF393F61-A870-44B0-880C-5DED8C2CC17A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestingGrounds", "TestingGrounds\TestingGrounds.csproj", "{FF393F61-A870-44B0-880C-5DED8C2CC17A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
