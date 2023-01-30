@@ -4,6 +4,11 @@ namespace ArraysAndHasing
 {
     public class ArraysAndHashing
     {
+        /// <summary>
+        /// Check if there are any duplicates in the int array
+        /// </summary>
+        /// <param name="nums"></param>
+        /// <returns></returns>
         public static bool ContainsDuplicate(int[] nums)
         {
            Dictionary<int, int> hash = new Dictionary<int, int>();
@@ -24,7 +29,12 @@ namespace ArraysAndHasing
             return false;
         }
 
-
+        /// <summary>
+        /// returns true if they are anagrams using a Dictionary (hash)
+        /// </summary>
+        /// <param name="s"></param>
+        /// <param name="t"></param>
+        /// <returns></returns>
         public static bool IsAnagram(string s, string t)
         {
 
@@ -71,6 +81,36 @@ namespace ArraysAndHasing
 
             return true;
 
+
+        }
+
+        /// <summary>
+        /// return true if they are ordered alphabeicly and they are equal to eachother than they are anagrams.
+        /// </summary>
+        /// <param name="s"></param>
+        /// <param name="t"></param>
+        /// <returns></returns>
+        public static bool IsAnagramSortMethod(string s, string t)
+        {
+
+           if(t.Length != s.Length)
+                return false;
+
+            return String.Concat(s.OrderBy(c => c)).Equals(String.Concat(t.OrderBy(c => c)));
+              
+        }
+
+        public static int[] TwoSums(int[] nums, int target)
+        {
+            for(int i = 0; i < nums.Length; i++)
+            {
+                if(nums[i] + nums[i++] == target)
+                {
+                    return new int[] { nums[i], nums[i++] };
+                }
+            }
+
+            return null;
 
         }
 
