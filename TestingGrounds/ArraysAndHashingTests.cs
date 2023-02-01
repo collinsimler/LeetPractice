@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace TestingGrounds
 {
     [TestClass]
-    public class UnitTest1
+    public class ArraysAndHashingTests
     {
         [TestMethod]
         public void TestContainsDupWithDup()
