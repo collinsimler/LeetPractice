@@ -55,7 +55,7 @@ namespace TestingGrounds
             string s = "anagram";
             string t = "angrana";
 
-            Assert.AreEqual(false, ArraysAndHashing.IsAnagram(s, t));
+            Assert.AreEqual(false, ArraysAndHashing.IsAnagramSortMethod(s, t));
 
 
         }
