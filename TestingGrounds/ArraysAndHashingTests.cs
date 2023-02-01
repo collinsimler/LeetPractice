@@ -1,6 +1,7 @@
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ArraysAndHasing;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace TestingGrounds
 {
@@ -10,7 +11,7 @@ namespace TestingGrounds
         [TestMethod]
         public void TestContainsDupWithDup()
         {
-            int[] nums = new int[] {1,2,3,4,4};
+            int[] nums = new int[] { 1, 2, 3, 4, 4 };
 
             Assert.AreEqual(true, ArraysAndHashing.ContainsDuplicate(nums));
 
@@ -33,7 +34,7 @@ namespace TestingGrounds
             string s = "anagram";
             string t = "nagaram";
 
-            Assert.AreEqual(true, ArraysAndHashing.IsAnagram(s,t));
+            Assert.AreEqual(true, ArraysAndHashing.IsAnagram(s, t));
 
 
         }
@@ -59,5 +60,48 @@ namespace TestingGrounds
 
 
         }
+
+        [TestMethod]
+        public void TestTwoSums()
+        {
+            int[] array = { 2, 7, 11, 15 };
+
+            int[] expectedAnswer = { 0, 1 };
+
+            Assert.AreEqual(true, expectedAnswer.SequenceEqual(ArraysAndHashing.TwoSums(array, 9)));
+
+            array = new int[] { 3, 2, 4 };
+
+            expectedAnswer = new int[] { 1, 2 };
+
+            Assert.AreEqual(true, expectedAnswer.SequenceEqual(ArraysAndHashing.TwoSums(array, 6)));
+        }
+
+        [TestMethod]
+        public void TestGroupAnagrams()
+        {
+            string[] strs = { "eat", "tea", "tan", "ate", "nat", "bat" };
+
+            //List<IList<string>> expectedf = new List<IList<string>>(){ [["bat"], ["nat", "tan"], ["ate", "eat", "tea"}
+
+            IList<IList<string>> result = ArraysAndHashing.GroupAnagrams(strs);
+        }
+
+        [TestMethod]
+        public void TestTopKFrequent()
+        {
+            int[] array = { 1, 1, 1, 2, 2, 3 };
+            int[] expected = { 1, 2 };
+
+            Assert.AreEqual(true, expected.SequenceEqual(ArraysAndHashing.TopKFrequent(array, 2)));
+
+            array = new int[] { 3, 0, 1, 0 };
+            expected = new int[] { 0 };
+
+            Assert.AreEqual(true, expected.SequenceEqual(ArraysAndHashing.TopKFrequent(array, 1)));
+
+
+       }
+
     }
 }
