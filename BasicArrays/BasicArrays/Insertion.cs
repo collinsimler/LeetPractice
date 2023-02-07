@@ -1,6 +1,6 @@
 ﻿namespace BasicArrays
 {
-    public class BasicArrays
+    public class Insertion
     {
         /// <summary>
         /// Given a binary array nums, return the maximum number of consecutive 1's in the array.
@@ -127,49 +127,31 @@
         /// <param name="n"></param>
         public static int[] Merge(int[] nums1, int m, int[] nums2, int n)
         {
-            int[] mergedArrays = new int[n+m];
+            int i = m - 1,
+                j = n - 1,
+                k = m + n - 1;
 
-            int nums1Index = 0;
-            int nums2Index = 0;
-            int mergedIndex = 0;
-
-            while(n > 0 || m > 0)
+            while (i > -1 && j > -1)
             {
-                if (nums1[nums1Index] < nums2[nums2Index] && m > 0)
+                if (nums1[i] >= nums2[j])
                 {
-                    mergedArrays[mergedIndex] = nums1[nums1Index];
-                    m--;
-                    mergedIndex++;
-                    nums1Index++;
+                    nums1[k] = nums1[i--];
+                }
+                else
+                {
+                    nums1[k] = nums2[j--];
+                }
 
-                }
-                else if (nums2[nums2Index] < nums1[nums1Index] && n > 0)
-                {
-                    mergedArrays[mergedIndex] = nums2[nums2Index];
-                    n--;
-                    mergedIndex++;
-                    nums2Index++;
-                }
-                else if (m > 0)
-                {
-                    mergedArrays[mergedIndex] = nums1[nums1Index];
-                    m--;
-                    mergedIndex++;
-                    nums1Index++;
-
-                }
-                else if (n > 0)
-                {
-                    mergedArrays[mergedIndex] = nums2[nums2Index];
-                    n--;
-                    mergedIndex++;
-                    nums2Index++;
-
-                }
+                k--;
             }
 
-            
-            return mergedArrays;
+            while (j > -1)
+            {
+                nums1[k--] = nums2[j--];
+            }
+
+
+            return nums1;
 
         }
     }
