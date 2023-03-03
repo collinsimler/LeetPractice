@@ -27,6 +27,12 @@
             return newlength;
         }
 
+        /// <summary>
+        /// Helper Method for RemovingDuplicates, will shift every element in arry to the left starting the provided index
+        /// </summary>
+        /// <param name="array"></param>
+        /// <param name="index"></param>
+        /// <returns></returns>
         private static int[] ShiftToLeft(int[] array, int index)
         {
 
@@ -37,6 +43,17 @@
             }
 
             return array;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="nums"></param>
+        /// <param name="val"></param>
+        /// <returns></returns>
+        public static int RemoveElement(int[] nums, int val)
+        {
+
         }
 
     }
