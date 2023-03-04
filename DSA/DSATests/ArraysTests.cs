@@ -1,6 +1,6 @@
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using DSA;
+using Arrays.DSA;
 
 namespace DSATests
 {
@@ -33,7 +33,7 @@ namespace DSATests
 
         private void TestDupsCase(int[] testCase, int[] expectedSolution)
         {
-            int newLength = Arrays.RemoveDuplicates(testCase);
+            int newLength = Array.RemoveDuplicates(testCase);
 
             Assert.IsTrue(expectedSolution.Length == newLength);
 
@@ -45,7 +45,7 @@ namespace DSATests
 
         private void TestDupsCase2(int[] testCase, int[] expectedSolution)
         {
-            int newLength = Arrays.RemoveDuplicates2(testCase);
+            int newLength = Array.RemoveDuplicates2(testCase);
 
             Assert.IsTrue(expectedSolution.Length == newLength);
 
@@ -83,7 +83,7 @@ namespace DSATests
 
             int[] case1 = { 3,2,2,3 };
 
-            int newLength = Arrays.RemoveElement(case1,3);
+            int newLength = Array.RemoveElement(case1,3);
 
             int[] expected1 = {  2, 2 };
 
