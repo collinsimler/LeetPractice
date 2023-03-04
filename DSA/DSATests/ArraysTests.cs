@@ -43,10 +43,38 @@ namespace DSATests
             }
         }
 
+        private void TestDupsCase2(int[] testCase, int[] expectedSolution)
+        {
+            int newLength = Arrays.RemoveDuplicates2(testCase);
+
+            Assert.IsTrue(expectedSolution.Length == newLength);
+
+            for (int i = 0; i < newLength; i++)
+            {
+                Assert.IsTrue(testCase[i] == expectedSolution[i]);
+            }
+        }
+
         [TestMethod]
         public void TestRemoveDups2()
         {
+            int[] testCase = { 1, 2, 2, 3, 5, 7, 7, 8 };
 
+            int[] expectedSolution = { 1, 2, 3, 5, 7, 8 };
+
+            TestDupsCase2(testCase, expectedSolution);
+
+            testCase = new int[] { 1, 1, 2 };
+
+            expectedSolution = new int[] { 1, 2 };
+
+            TestDupsCase2(testCase, expectedSolution);
+
+            testCase = new int[] { 0, 0, 1, 1, 1, 2, 2, 3, 3, 4 };
+
+            expectedSolution = new int[] { 0, 1, 2, 3, 4 };
+
+            TestDupsCase2(testCase, expectedSolution);
         }
 
         [TestMethod]

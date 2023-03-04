@@ -5,9 +5,6 @@
         /// <summary>
         /// Given an integer array nums sorted in non-decreasing order, remove the duplicates in-place such that each unique element appears only once.
         /// The relative order of the elements should be kept the same.
-        ///
-        /// Since it is impossible to change the length of the array in some languages, you must instead have the result be placed in the first part of the array nums.
-        /// More formally, if there are k elements after removing the duplicates, then the first k elements of nums should hold the final result. It does not matter what you leave beyond the first k elements.
         /// </summary>
         /// <param name="nums"></param>
         /// <returns></returns>
@@ -45,35 +42,54 @@
             return array;
         }
 
-
+        /// <summary>
+        /// This is a more optimal solution with O(n) time complexity vs the first solution was O(n^2), this uses the two pointers method 
+        /// </summary>
+        /// <param name="nums"></param>
+        /// <returns></returns>
         public static int RemoveDuplicates2(int[] nums)
         {
+            int unquieValueIndexPointer = 0;
+            
 
+            for (int leadingPointer = 1; leadingPointer < nums.Length; leadingPointer++)
+            {
+                if(nums[unquieValueIndexPointer] != nums[leadingPointer])
+                {
+                    unquieValueIndexPointer++;
+                    nums[unquieValueIndexPointer] = nums[leadingPointer];
+
+                }
+               
+            }
+
+            return unquieValueIndexPointer + 1;
         }
 
         /// <summary>
-        /// Given an integer array nums and an integer val, remove all occurrences of val in nums in-place. The relative order of the elements may be changed.
-        ///
-        /// Since it is impossible to change the length of the array in some languages, you must instead have the result be placed in the first part of the array nums.
-        /// More formally, if there are k elements after removing the duplicates, then the first k elements of nums should hold the final result. It does not matter what you leave beyond the first k elements.
+        /// Given an integer array nums and an integer val, remove all occurrences of val in nums in-place. 
+        /// The relative order of the elements may be changed.
         /// </summary>
         /// <param name="nums"></param>
         /// <param name="val"></param>
         /// <returns></returns>
         public static int RemoveElement(int[] nums, int val)
         {
-            int newLength = nums.Length;
+            if(nums == null)
+                return 0;
 
-            for (int i = 0; i < newLength; i++)
+            int Lpointer = 0;
+
+            for(int Rpointer = 0; Rpointer < nums.Length; Rpointer++)
             {
-                if (nums[i] == val)
+                if( nums[Rpointer] != val)
                 {
-                    ShiftToLeft(nums, i);
-                    newLength--;
+                    nums[Lpointer] = nums[Rpointer];
+                    Lpointer++;
                 }
             }
 
-            return newLength;
+            return Lpointer;
         }
 
     }
