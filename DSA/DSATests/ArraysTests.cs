@@ -10,11 +10,54 @@ namespace DSATests
         [TestMethod]
         public void TestRemoveDups()
         {
-            int[] case1 = { 1, 2, 2, 3, 5, 7, 7, 8 };
+            
+            int[] testCase = { 1, 2, 2, 3, 5, 7, 7, 8 };
+            
+            int[] expectedSolution = { 1, 2, 3, 5, 7, 8 };
 
-            int newLength = Arrays.RemoveDuplicates(case1);
+            TestDupsCase(testCase, expectedSolution);
 
-            int[] expected1 = { 1, 2, 3, 5, 7, 8 };
+            testCase = new int[] { 1, 1, 2 };
+
+            expectedSolution = new int[] { 1, 2 };
+
+            TestDupsCase(testCase, expectedSolution);
+
+            testCase = new int[] { 0, 0, 1, 1, 1, 2, 2, 3, 3, 4 };
+
+            expectedSolution = new int[] { 0, 1, 2, 3, 4 };
+
+            TestDupsCase(testCase, expectedSolution);
+            
+        }
+
+        private void TestDupsCase(int[] testCase, int[] expectedSolution)
+        {
+            int newLength = Arrays.RemoveDuplicates(testCase);
+
+            Assert.IsTrue(expectedSolution.Length == newLength);
+
+            for (int i = 0; i < newLength; i++)
+            {
+                Assert.IsTrue(testCase[i] == expectedSolution[i]);
+            }
+        }
+
+        [TestMethod]
+        public void TestRemoveDups2()
+        {
+
+        }
+
+        [TestMethod]
+        public void TestRemoveValue()
+        {
+
+            int[] case1 = { 3,2,2,3 };
+
+            int newLength = Arrays.RemoveElement(case1,3);
+
+            int[] expected1 = {  2, 2 };
 
             Assert.IsTrue(expected1.Length == newLength);
 
@@ -22,8 +65,6 @@ namespace DSATests
             {
                 Assert.IsTrue(case1[i] == expected1[i]);
             }
-
-           
         }
     }
 }

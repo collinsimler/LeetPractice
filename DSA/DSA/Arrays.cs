@@ -15,7 +15,7 @@
         {
             int newlength = nums.Length;
 
-            for (int i = nums.Length - 1; i > 1; i--)
+            for (int i = nums.Length - 1; i > 0; i--)
             {
                 if (nums[i - 1] == nums[i])
                 {
@@ -45,15 +45,35 @@
             return array;
         }
 
+
+        public static int RemoveDuplicates2(int[] nums)
+        {
+
+        }
+
         /// <summary>
-        /// 
+        /// Given an integer array nums and an integer val, remove all occurrences of val in nums in-place. The relative order of the elements may be changed.
+        ///
+        /// Since it is impossible to change the length of the array in some languages, you must instead have the result be placed in the first part of the array nums.
+        /// More formally, if there are k elements after removing the duplicates, then the first k elements of nums should hold the final result. It does not matter what you leave beyond the first k elements.
         /// </summary>
         /// <param name="nums"></param>
         /// <param name="val"></param>
         /// <returns></returns>
         public static int RemoveElement(int[] nums, int val)
         {
+            int newLength = nums.Length;
 
+            for (int i = 0; i < newLength; i++)
+            {
+                if (nums[i] == val)
+                {
+                    ShiftToLeft(nums, i);
+                    newLength--;
+                }
+            }
+
+            return newLength;
         }
 
     }
