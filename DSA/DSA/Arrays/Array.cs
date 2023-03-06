@@ -92,5 +92,34 @@
             return Lpointer;
         }
 
+        /// <summary>
+        /// Given an integer array nums of length n, you want to create an array ans of length 2n where ans[i] == nums[i] and ans[i + n] == nums[i] for 0 <= i < n (0-indexed).
+        ///
+        /// Specifically, ans is the concatenation of two nums arrays.
+        ///
+        /// Return the array ans.
+        /// </summary>
+        /// <param name="nums"></param>
+        /// <returns></returns>
+        public static int[] GetConcatenation(int[] nums)
+        {
+            int[] doubledArray = new int[nums.Length * 2];
+
+            int numsIndex = 0;
+
+            for (int i = 0; i < doubledArray.Length; i++)
+            {
+                if (numsIndex == nums.Length)
+                    numsIndex = 0;
+
+                doubledArray[i] = nums[numsIndex];
+
+                numsIndex++;
+
+            }
+
+            return doubledArray;
+        }
+
     }
 }

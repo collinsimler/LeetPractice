@@ -94,5 +94,22 @@ namespace DSATests
                 Assert.IsTrue(case1[i] == expected1[i]);
             }
         }
+
+        [TestMethod]
+        public void TestConCatenationOfArrays()
+        {
+            int[] case1 = { 1,2,1 };
+
+            int[] result = Array.GetConcatenation(case1);
+
+            int[] expected1 = { 1, 2, 1, 1, 2, 1 };
+
+
+            for (int i = 0; i < result.Length; i++)
+            {
+                Assert.IsTrue(expected1[i] == result[i]);
+            }
+
+        }
     }
 }
