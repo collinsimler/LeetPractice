@@ -1,4 +1,6 @@
-﻿namespace Arrays.DSA
+﻿using System.Collections;
+
+namespace Arrays.DSA
 {
     public class Array
     {
@@ -16,8 +18,8 @@
             {
                 if (nums[i - 1] == nums[i])
                 {
-                   nums = ShiftToLeft(nums, i);
-                   newlength--;
+                    nums = ShiftToLeft(nums, i);
+                    newlength--;
                 }
             }
 
@@ -50,17 +52,17 @@
         public static int RemoveDuplicates2(int[] nums)
         {
             int unquieValueIndexPointer = 0;
-            
+
 
             for (int leadingPointer = 1; leadingPointer < nums.Length; leadingPointer++)
             {
-                if(nums[unquieValueIndexPointer] != nums[leadingPointer])
+                if (nums[unquieValueIndexPointer] != nums[leadingPointer])
                 {
                     unquieValueIndexPointer++;
                     nums[unquieValueIndexPointer] = nums[leadingPointer];
 
                 }
-               
+
             }
 
             return unquieValueIndexPointer + 1;
@@ -75,14 +77,14 @@
         /// <returns></returns>
         public static int RemoveElement(int[] nums, int val)
         {
-            if(nums == null)
+            if (nums == null)
                 return 0;
 
             int Lpointer = 0;
 
-            for(int Rpointer = 0; Rpointer < nums.Length; Rpointer++)
+            for (int Rpointer = 0; Rpointer < nums.Length; Rpointer++)
             {
-                if( nums[Rpointer] != val)
+                if (nums[Rpointer] != val)
                 {
                     nums[Lpointer] = nums[Rpointer];
                     Lpointer++;
@@ -119,6 +121,105 @@
             }
 
             return doubledArray;
+        }
+
+        /// <summary>
+        /// You are keeping the scores for a baseball game with strange rules. At the beginning of the game, you start with an empty record.
+        ///
+        /// You are given a list of strings operations, where operations[i] is the ith operation you must apply to the record and is one of the following:
+        ///
+        /// An integer x.
+        /// Record a new score of x.
+        ///
+        /// '+'.
+        /// Record a new score that is the sum of the previous two scores.
+        ///
+        /// 'D'.
+        /// Record a new score that is the double of the previous score.
+        ///
+        /// 'C'.
+        /// Invalidate the previous score, removing it from the record.
+        ///
+        /// Return the sum of all the scores on the record after applying all the operations.
+        /// </summary>
+        /// <param name="operations"></param>
+        /// <returns></returns>
+        public static int CalPoints(string[] operations)
+        {
+            Stack<string> ScoreHistory = new Stack<string>();
+
+            for (int i = 0; i < operations.Length; i++)
+            {
+                int temp;
+                if (int.TryParse(operations[i], out temp))
+                {
+                    ScoreHistory.Push(operations[i]);
+                }
+                else if (operations[i].Equals("+"))
+                {
+                    int popped = int.Parse(ScoreHistory.Pop());
+
+                    temp = int.Parse(ScoreHistory.Peek());
+
+                    ScoreHistory.Push(popped.ToString());//push this one back on 
+                    ScoreHistory.Push((popped + temp).ToString());
+
+
+
+                }
+                else if (operations[i].Equals("C"))
+                {
+                    ScoreHistory.Pop();
+
+                }
+                else if (operations[i].Equals("D"))
+                {
+                    int doubledPrevious = int.Parse(ScoreHistory.Peek()) * 2;
+                    ScoreHistory.Push(doubledPrevious.ToString());
+                }
+            }
+
+
+
+            int totalScore = 0;
+
+            foreach (var score in ScoreHistory)
+            {
+                totalScore += int.Parse(score);
+            }
+
+
+            return totalScore;
+        }
+
+        public static bool IsValid(string s)
+        {
+
+            Stack<char> Parentheses = new Stack<char>();
+
+            Dictionary<char, char> map = new Dictionary<char, char>()
+            {
+                { '}','{'},
+                {']','['},
+                {')','('}
+            };
+
+            foreach (char c in s)
+            {
+                if (map.ContainsKey(c))
+                {
+                    if (Parentheses.Count != 0 && Parentheses.Peek().Equals(map[c]))
+                        Parentheses.Pop();
+                    else
+                        return false;
+                }
+                else
+                {
+                    Parentheses.Push(c);
+                }
+            }
+
+            return Parentheses.Count == 0;
         }
 
     }

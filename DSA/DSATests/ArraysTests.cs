@@ -1,4 +1,5 @@
 using System.Linq;
+using System.Runtime.InteropServices;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Arrays.DSA;
 
@@ -109,6 +110,40 @@ namespace DSATests
             {
                 Assert.IsTrue(expected1[i] == result[i]);
             }
+
+        }
+
+        [TestMethod]
+        public void TestBaseballGame()
+        {
+            string[] ops = new[] { "5", "2", "C", "D", "+" };
+
+            
+            Assert.AreEqual(Array.CalPoints(ops), 30);
+        }
+
+        [TestMethod]
+        public void TestIsVaildParentheses()
+        {
+            string case1 = "()[]{}";
+
+
+            Assert.IsTrue(Array.IsValid(case1));
+
+            string case2 = "(]";
+
+
+            Assert.IsFalse(Array.IsValid(case2));
+
+            string case3 = "]";
+
+
+            Assert.IsFalse(Array.IsValid(case3));
+
+            string case4 = "(])";
+
+
+            Assert.IsFalse(Array.IsValid(case4));
 
         }
     }
