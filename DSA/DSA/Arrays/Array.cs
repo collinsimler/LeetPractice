@@ -192,6 +192,11 @@ namespace Arrays.DSA
             return totalScore;
         }
 
+        /// <summary>
+        /// Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
         public static bool IsValid(string s)
         {
 
@@ -221,6 +226,14 @@ namespace Arrays.DSA
 
             return Parentheses.Count == 0;
         }
+
+
+
+
+
+
+
+
 
     }
 }
