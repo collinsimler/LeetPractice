@@ -1,8 +1,8 @@
 ﻿namespace DSA.LinkedList
 {
-    public class SinglyLinkedList
+    public static class SinglyLinkedList
     {
-        public ListNode ReverseList(ListNode head)
+        public static ListNode ReverseList(ListNode head)
         {
             if (head == null)
                 return null;
@@ -10,32 +10,19 @@
             if(head.next == null)
                 return head;
 
-            Stack<ListNode> stack = new Stack<ListNode>();
+            ListNode prev = null;
+            ListNode current = head;
 
-
-            while (head.next != null)
+            while (current != null)
             {
-                stack.Push(head);
-                head = head.next;
+                var nxt = current.next;
+                current.next = prev;
+                prev = current;
+                current = nxt;
+                
             }
 
-            
-            ListNode newHead = stack.Pop();
-            ListNode next;
-
-            newHead.next = ;
-
-            for (int i = 0; i < stack.Count; i++)
-            {
-                ListNode newNode = stack.Pop();
-                newHead.next = newNode;
-
-            }
-            
-
-
-
-            return newHead;
+            return prev;
         }
 
     }
