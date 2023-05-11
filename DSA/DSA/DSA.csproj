@@ -6,4 +6,19 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="BinarySearch\**" />
+    <Compile Remove="LinkedLists\**" />
+    <Compile Remove="Recursion\**" />
+    <Compile Remove="Sorting\**" />
+    <EmbeddedResource Remove="BinarySearch\**" />
+    <EmbeddedResource Remove="LinkedLists\**" />
+    <EmbeddedResource Remove="Recursion\**" />
+    <EmbeddedResource Remove="Sorting\**" />
+    <None Remove="BinarySearch\**" />
+    <None Remove="LinkedLists\**" />
+    <None Remove="Recursion\**" />
+    <None Remove="Sorting\**" />
+  </ItemGroup>
+
 </Project>
