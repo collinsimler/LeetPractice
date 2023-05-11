@@ -181,6 +181,76 @@
             return hashMap.OrderByDescending(x => x.Value).Select(x => x.Key).Take(k).ToArray();
         }
 
+        public static bool IsValidSudoku(char[][] board)
+        {
+
+            return isValidRow(board) && isValidColumn(board);
+
+        }
+
+
+        private static bool isValidRow(char[][] board)
+        {
+
+
+            for (int i = 0; i < 9; i++)
+            {
+
+                Dictionary<int, int> row = new Dictionary<int, int>();
+
+                for (int j = 0; j < 9; j++)
+                {
+                    int spot = board[i][j];
+
+                    if (row.ContainsKey(spot))
+                        return false;
+                    if (spot < 0 || spot > 9)
+                        return false;
+                    if (spot != '.')
+                        row.Add(board[i][j], j);
+                    
+                }
+            }
+
+            return true;
+        }
+
+        private static bool isValidColumn(char[][] board)
+        {
+
+
+            for (int i = 0; i < 9; i++)
+            {
+
+                Dictionary<int, int> row = new Dictionary<int, int>();
+
+                for (int j = 0; j < 9; j++)
+                {
+                    int spot = board[i][j];
+
+                    if (row.ContainsKey(spot))
+                        return false;
+                    if (spot < 0 || spot > 9)
+                        return false;
+                    if (spot != '.')
+                        row.Add(board[j][i], j);
+                }
+            }
+
+            return true;
+
+        }
+
+        private static bool isValidGrids(char[][] board)
+        {
+
+            for (int i = 0; i < board.Length; i++)
+            {
+
+            }
+
+            return true;
+        }
 
     }
 }

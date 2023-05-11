@@ -96,18 +96,14 @@
 
                 if(indices.ContainsKey(difference))
                     return new int[] { indices[difference], i };
+
+                indices.Add(nums[i], i);
             }
 
             return null;
         }
 
-        public static int MaxProfit(int[] prices)
-        {
-
-        }
-
-
-
+        
 
 
     }

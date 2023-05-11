@@ -1,7 +1,10 @@
+using System;
 using ArraysAndHasing;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using Microsoft.VisualBasic.CompilerServices;
 
 namespace TestingGrounds
 {
@@ -101,7 +104,54 @@ namespace TestingGrounds
             Assert.AreEqual(true, expected.SequenceEqual(ArraysAndHashing.TopKFrequent(array, 1)));
 
 
-       }
+        }
+
+        [TestMethod]
+        public void TestIsValidSudoku()
+        {
+            char[][] board = new char[9][];
+            for (int i = 0; i < board.Length; i++)
+            {
+                board[i] = new char[9];
+            }
+
+            InitBoard(board, "53..7...9", "6..195...", ".98....6.", "8...6...3", "4..8.3..1", "7...2...6", ".6....28.", "...419..5", "....8..79");
+
+
+            Debug.WriteLine("Request Board");
+            PrintBoard(board);
+
+            Assert.IsTrue(ArraysAndHashing.IsValidSudoku(board));
+
+        }
+
+        private static void InitBoard(char[][] board, params string[] rows)
+        {
+            for (int i = 0; i < rows.Length; i++)
+            for (int j = 0; j < rows[i].Length; j++)
+            {
+                board[i][j] = rows[i][j];
+            }
+        }
+
+        private static void PrintBoard(char[][] board)
+        {
+            for (int i = 0; i < board.Length; i++)
+            {
+
+                Debug.Write("[ ");
+                for (int j = 0; j < board[i].Length; j++)
+                {
+                    Debug.Write(board[i][j]+" ");
+
+                }
+
+                Debug.Write("] \n");
+
+            }
+
+        }
+
 
     }
 }

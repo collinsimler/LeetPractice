@@ -53,17 +53,17 @@ namespace Blind75Tests
             int[] testCase = new[] { 2, 7, 11, 15 };
             int target = 9;
 
-            Assert.AreEqual(new int[]{0,1},Easy.TwoSum(testCase,target));
+            CollectionAssert.AreEqual(new int[]{0,1},Easy.TwoSum(testCase,target));
 
             testCase = new[] { 3, 2, 4 };
             target = 6;
 
-            Assert.AreEqual(new int[]{0,1},Easy.TwoSum(testCase,target));
+            CollectionAssert.AreEqual(new int[]{1,2},Easy.TwoSum(testCase,target));
 
         }
 
         [TestMethod]
-        public void TestIsAnagram()
+        public void TestIsAnagram2()
         {
             string word = "worddog";
             string possibleAnagram = "goddrow";
