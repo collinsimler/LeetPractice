@@ -1,5 +1,3 @@
-using System;
-using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -10,43 +8,40 @@ namespace DSATests
     [TestClass]
     public class LinkedListTest
     {
+
         [TestMethod]
-        public void TestSingleLinkedList()
+        public void ReverseList_WithSingleNode_ShouldReturnSameNode()
         {
-            ListNode head = new ListNode();
-            ListNode curr = head;
+            // Arrange
+            SinglyLinkedList.ListNode head = new SinglyLinkedList.ListNode(1);
 
-            for (int i = 0; i < 6; i++)
-            {
-                var temp = new ListNode();
-                temp.val = i;
+            // Act
+            SinglyLinkedList.ListNode result = SinglyLinkedList.ReverseList(head);
 
-                curr.next = temp;
-                curr = curr.next;
-            }
-
-            Console.WriteLine("This is the node List going in.");
-            printAllNodes(head);
-
-            head = SinglyLinkedList.ReverseList(head);
-
-            Console.WriteLine("This is the node List coming out.");
-
-            printAllNodes(head);
-
-
+            // Assert
+            Assert.AreEqual(head, result);
         }
 
-        private void printAllNodes(ListNode head)
+        [TestMethod]
+        public void ReverseList_WithMultipleNodes_ShouldReverseLinkedList()
         {
-            ListNode current = head;
-            Debug.Write("[ ");
-            while (current != null)
-            {
-                Debug.Write(current.val + ", ");
-                current = current.next;
-            }
-            Debug.Write("]");
+            // Arrange
+            SinglyLinkedList.ListNode head = new SinglyLinkedList.ListNode(1);
+            head.next = new SinglyLinkedList.ListNode(2);
+            head.next.next = new SinglyLinkedList.ListNode(3);
+            head.next.next.next = new SinglyLinkedList.ListNode(4);
+            head.next.next.next.next = new SinglyLinkedList.ListNode(5);
+
+            // Act
+            SinglyLinkedList.ListNode result = SinglyLinkedList.ReverseList(head);
+
+            // Assert
+            Assert.AreEqual(5, result.val);
+            Assert.AreEqual(4, result.next.val);
+            Assert.AreEqual(3, result.next.next.val);
+            Assert.AreEqual(2, result.next.next.next.val);
+            Assert.AreEqual(1, result.next.next.next.next.val);
+            Assert.IsNull(result.next.next.next.next.next);
         }
     }
 }

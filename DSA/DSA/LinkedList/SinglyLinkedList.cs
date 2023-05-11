@@ -1,29 +1,32 @@
 ﻿namespace DSA.LinkedList
 {
-    public static class SinglyLinkedList
+    public class SinglyLinkedList
     {
         public static ListNode ReverseList(ListNode head)
         {
             if (head == null)
                 return null;
 
-            if(head.next == null)
-                return head;
+            ListNode previousNode = null, curr = head;
 
-            ListNode prev = null;
-            ListNode current = head;
 
-            while (current != null)
+            while (curr != null)
             {
-                var nxt = current.next;
-                current.next = prev;
-                prev = current;
-                current = nxt;
-                
+                //save current info
+                var nextNode = curr.next;
+
+                //make the reversal
+                curr.next = previousNode;
+                previousNode = curr;
+                curr = nextNode;
+
             }
 
-            return prev;
-        }
+
+
+            return previousNode;
+
+        
 
     }
 
