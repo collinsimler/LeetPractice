@@ -13,10 +13,10 @@ namespace DSATests
         public void ReverseList_WithSingleNode_ShouldReturnSameNode()
         {
             // Arrange
-            SinglyLinkedList.ListNode head = new SinglyLinkedList.ListNode(1);
+            ListNode head = new ListNode(1);
 
             // Act
-            SinglyLinkedList.ListNode result = SinglyLinkedList.ReverseList(head);
+            ListNode result = SinglyLinkedList.ReverseList(head);
 
             // Assert
             Assert.AreEqual(head, result);
@@ -26,14 +26,14 @@ namespace DSATests
         public void ReverseList_WithMultipleNodes_ShouldReverseLinkedList()
         {
             // Arrange
-            SinglyLinkedList.ListNode head = new SinglyLinkedList.ListNode(1);
-            head.next = new SinglyLinkedList.ListNode(2);
-            head.next.next = new SinglyLinkedList.ListNode(3);
-            head.next.next.next = new SinglyLinkedList.ListNode(4);
-            head.next.next.next.next = new SinglyLinkedList.ListNode(5);
+            ListNode head = new ListNode(1);
+            head.next = new ListNode(2);
+            head.next.next = new ListNode(3);
+            head.next.next.next = new ListNode(4);
+            head.next.next.next.next = new ListNode(5);
 
             // Act
-            SinglyLinkedList.ListNode result = SinglyLinkedList.ReverseList(head);
+            ListNode result = SinglyLinkedList.ReverseList(head);
 
             // Assert
             Assert.AreEqual(5, result.val);
