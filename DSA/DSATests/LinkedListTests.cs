@@ -13,6 +13,7 @@ namespace DSATests
         public void ReverseList_WithSingleNode_ShouldReturnSameNode()
         {
             // Arrange
+
             ListNode head = new ListNode(1);
 
             // Act
