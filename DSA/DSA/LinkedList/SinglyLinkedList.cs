@@ -26,7 +26,8 @@
 
             return previousNode;
 
-        
+
+        }
 
     }
 
